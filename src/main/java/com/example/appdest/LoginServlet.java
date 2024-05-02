@@ -47,15 +47,21 @@ public class LoginServlet extends HttpServlet {
             statement.setString(1, email);
             statement.setString(2, password);
 
+
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
                 String role = resultSet.getString("role");
+                String username = resultSet.getString("username");
                 System.out.println("User role: " + role);
+                System.out.println("User name: " + username);
+                request.setAttribute("username", username);
                 if ("Admin".equals(role)) {
-                    response.sendRedirect("admin.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+                    dispatcher.forward(request, response);
                 } else if ("Electeur".equals(role)) {
-                    response.sendRedirect("user.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("user.jsp");
+                    dispatcher.forward(request, response);
                 }
             }else {
                 String errorMessage = "Invalid email or password";

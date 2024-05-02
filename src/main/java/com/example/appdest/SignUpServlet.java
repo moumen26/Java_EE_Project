@@ -37,7 +37,6 @@ public class SignUpServlet extends HttpServlet {
         String phone = request.getParameter("phone");
 
 
-
         if (username == null || username.isEmpty() || email == null || email.isEmpty() ||
                 password == null || password.isEmpty() || confirmPassword == null || confirmPassword.isEmpty() || phone == null || phone.isEmpty()) {
             String errorMessage = "Please fill all the required fields";

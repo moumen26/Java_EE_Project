@@ -33,12 +33,13 @@
 <section class="vote-section">
     <h2>Presidential</h2>
     <div class="vote-cards">
+    <c:forEach items="${candidats}" var="candidat">
         <div class="vote-card">
             <div class="vote-img">
                 <img src="Images/person.jpg" alt="">
             </div>
             <div class="vote-content">
-                <h3>Khaldi Abdelmoumen</h3>
+                <h3>${candidat.name}</h3>
                 <span>Vote for your favourite candidate</span>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae, quo, quas, quos
                     repudiandae
@@ -46,6 +47,7 @@
             </div>
             <input type="submit" value="Vote">
         </div>
+    </c:forEach>
     </div>
 </section>
 

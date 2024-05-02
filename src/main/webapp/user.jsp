@@ -22,7 +22,7 @@
     <div class="right-class">
         <div class="login-class">
             <i class="fa-regular fa-user"></i>
-            <span>Login</span>
+            <span>${username}</span>
         </div>
 
     </div>
