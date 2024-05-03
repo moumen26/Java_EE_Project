@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.example.appdest.Models.Candidat" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: moume
   Date: 01/05/2024
@@ -33,21 +34,30 @@
 <section class="vote-section">
     <h2>Presidential</h2>
     <div class="vote-cards">
-    <c:forEach items="${candidats}" var="candidat">
-        <div class="vote-card">
-            <div class="vote-img">
-                <img src="Images/person.jpg" alt="">
-            </div>
-            <div class="vote-content">
-                <h3>${candidat.name}</h3>
-                <span>Vote for your favourite candidate</span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae, quo, quas, quos
-                    repudiandae
-                    voluptatibus voluptatum voluptates quaerat quibusdam quia quo nihil quod.</p>
-            </div>
-            <input type="submit" value="Vote">
-        </div>
-    </c:forEach>
+        <% List<Candidat> candidats = (List<Candidat>) request.getAttribute("home");
+            if (candidats != null && !candidats.isEmpty()) {
+                for (Candidat candidat : candidats) { %>
+
+                    <div class="vote-card">
+                        <div class="vote-img">
+                            <img src="Images/person.jpg" alt="">
+                        </div>
+                        <div class="vote-content">
+                            <h3><%= candidat.getName() %></h3>
+                            <span>Vote for your favourite candidate</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae, quo, quas, quos
+                                repudiandae
+                                voluptatibus voluptatum voluptates quaerat quibusdam quia quo nihil quod.</p>
+                        </div>
+                        <input type="submit" value="Vote">
+                    </div>
+        <%     }
+        } else { %>
+        <tr>
+            <td colspan="4">No candidats found</td>
+        </tr>
+        <% } %>
+
     </div>
 </section>
 
