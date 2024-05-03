@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 // Imports and package declaration
 
-@WebServlet("/admin")
+@WebServlet("/addCandidat")
 public class AddCandidatServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

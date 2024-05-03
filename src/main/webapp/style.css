@@ -281,7 +281,6 @@ nav span{
     height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 400px);
-    background-color: red;
 }
 
 .vote-card{
@@ -349,12 +348,13 @@ nav span{
     display: flex;
     align-items: center;
     gap: 12px;
+    border: none;
+    color: white;
+    font-size: 22px;
 }
 a{
     text-decoration: none;
-
 }
-
 
 .save-button{
     border: none;

@@ -69,9 +69,10 @@
                         <div class="add-button">
                             <span>Update</span>
                         </div>
-                        <div class="add-button">
-                            <span>Delete</span>
-                        </div>
+                        <form action="deleteCandidat" method="post">
+                            <input type="hidden" name="id" value="<%= candidat.getId() %>">
+                            <button type="submit" class="add-button"><span>Delete</span></button>
+                        </form>
                     </td>
                 </tr>
                 <%     }
@@ -94,7 +95,7 @@
 <div class="add-candidat-class" id="addCandidat">
     <div class="add-candidat-class-container">
         <span>Add Candidat</span>
-        <form action="admin" method="post">
+        <form action="addCandidat" method="post">
             <div class="candidat-form">
                 <label for="name">Name:</label>
                 <input type="text" placeholder="Name.." name="name" id="name" required>
