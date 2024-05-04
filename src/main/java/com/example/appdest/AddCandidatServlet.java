@@ -30,6 +30,8 @@ public class AddCandidatServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String election = request.getParameter("election");
+        String image = request.getParameter("image");
+
 
         if (name == null || name.isEmpty() || email == null || email.isEmpty() ||
                 election == null || election.isEmpty()) {
@@ -40,7 +42,7 @@ public class AddCandidatServlet extends HttpServlet {
             return;
         }
 
-        String insertSql = "INSERT INTO candidats (name, email, election) VALUES (?, ?, ?)";
+        String insertSql = "INSERT INTO candidats (name, email, election, image) VALUES (?, ?, ?, ?)";
         String selectSql = "SELECT * FROM candidats WHERE name = ?";
 
         try (
@@ -61,6 +63,7 @@ public class AddCandidatServlet extends HttpServlet {
             statementInsert.setString(1, name);
             statementInsert.setString(2, email);
             statementInsert.setString(3, election);
+            statementInsert.setString(4, image);
 
             int rowsInserted = statementInsert.executeUpdate();
 
@@ -77,7 +80,7 @@ public class AddCandidatServlet extends HttpServlet {
             request.setAttribute("errorMessage", errorMessage);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect(request.getContextPath() + "/candidats");
+
     }
 }

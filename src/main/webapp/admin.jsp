@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
           integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="AppDist.css">
 </head>
 <body>
 <nav>
@@ -93,20 +93,24 @@
 
 
 <div class="add-candidat-class" id="addCandidat">
-    <div class="add-candidat-class-container">
+    <div class="add-candidat-class-container" style="height: 480px">
         <span>Add Candidat</span>
         <form action="addCandidat" method="post">
-            <div class="candidat-form">
+            <div class="candidat-form text-form">
                 <label for="name">Name:</label>
                 <input type="text" placeholder="Name.." name="name" id="name" required>
             </div>
-            <div class="candidat-form">
+            <div class="candidat-form text-form">
                 <label for="email">Email:</label>
                 <input type="email" placeholder="Email.." name="email" id="email" required>
             </div>
-            <div class="candidat-form">
+            <div class="candidat-form text-form">
                 <label for="election">Election:</label>
                 <input type="text" placeholder="Election.." name="election" id="election" required>
+            </div>
+            <div class="candidat-form form-image">
+                <input type="file" name="image" id="image" class="inputfile" />
+                <label for="image">Choose a image</label>
             </div>
             <input type="submit" value="Save" class="save-button">
         </form>

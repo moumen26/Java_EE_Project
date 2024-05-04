@@ -57,8 +57,7 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("User name: " + username);
                 request.setAttribute("username", username);
                 if ("Admin".equals(role)) {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/candidats");
                 } else if ("Electeur".equals(role)) {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("user.jsp");
                     dispatcher.forward(request, response);

@@ -5,7 +5,8 @@ public class Candidat {
     private String name;
     private String email;
     private String election;
-    public Candidat() {}
+    private String image;
+
 
     public Candidat(int id, String name, String email, String election) {
         this.id = id;
@@ -46,12 +47,21 @@ public class Candidat {
         this.election = election;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String toString() {
         return "Candidat{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", election='" + election + '\'' +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

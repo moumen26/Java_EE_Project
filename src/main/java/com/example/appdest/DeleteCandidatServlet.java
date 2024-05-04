@@ -27,7 +27,7 @@ public class DeleteCandidatServlet extends HttpServlet {
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
-                response.sendRedirect(request.getContextPath() + "/admin?successMessage=Candidat deleted successfully");
+                response.sendRedirect(request.getContextPath() + "/candidats");
             } else {
                 response.sendRedirect(request.getContextPath() + "/admin?errorMessage=No candidat found with ID " + candidatId);
             }

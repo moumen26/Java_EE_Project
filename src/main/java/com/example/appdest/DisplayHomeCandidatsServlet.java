@@ -22,31 +22,61 @@ import java.util.List;
 public class DisplayHomeCandidatsServlet  extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String sql = "SELECT * FROM candidats";
+        String sqlPresidential = "SELECT * FROM candidats WHERE election = 'Presidential'";
+        String sqlSenatorial = "SELECT * FROM candidats WHERE election = 'Senatorial'";
         Connection con = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        PreparedStatement PresidentialStatement = null;
+        ResultSet PresidentialResultSet = null;
+        PreparedStatement SenatorialStatement = null;
+        ResultSet SenatorialResultSet = null;
 
         try {
             con = DBConfiguration.getConnection();
-            statement = con.prepareStatement(sql);
-            resultSet = statement.executeQuery();
+            PresidentialStatement = con.prepareStatement(sqlPresidential);
+            PresidentialResultSet = PresidentialStatement.executeQuery();
 
-            List<Candidat> candidats = new ArrayList<>();
-            while (resultSet.next()) {
+            List<Candidat> Presidentialcandidats = new ArrayList<>();
+            while (PresidentialResultSet.next()) {
                 Candidat candidat = new Candidat(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("email"),
-                        resultSet.getString("election")
+                        PresidentialResultSet.getInt("id"),
+                        PresidentialResultSet.getString("name"),
+                        PresidentialResultSet.getString("email"),
+                        PresidentialResultSet.getString("election")
                 );
-                candidats.add(candidat);
+                Presidentialcandidats.add(candidat);
             }
 
-            if (candidats.isEmpty()) {
+            if (Presidentialcandidats.isEmpty()) {
                 request.setAttribute("error", "No candidats found");
             } else {
-                request.setAttribute("home", candidats);
+                request.setAttribute("homePresidential", Presidentialcandidats);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Database error: " + e.getMessage());
+        }
+
+        try {
+            con = DBConfiguration.getConnection();
+            SenatorialStatement = con.prepareStatement(sqlSenatorial);
+            SenatorialResultSet = SenatorialStatement.executeQuery();
+
+            List<Candidat> Senatorialcandidats = new ArrayList<>();
+            while (SenatorialResultSet.next()) {
+                Candidat candidat = new Candidat(
+                        SenatorialResultSet.getInt("id"),
+                        SenatorialResultSet.getString("name"),
+                        SenatorialResultSet.getString("email"),
+                        SenatorialResultSet.getString("election")
+                );
+                Senatorialcandidats.add(candidat);
+            }
+
+            if (Senatorialcandidats.isEmpty()) {
+                request.setAttribute("error", "No candidats found");
+            } else {
+                request.setAttribute("homeSenatorial", Senatorialcandidats);
             }
 
         } catch (SQLException e) {
