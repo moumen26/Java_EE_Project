@@ -59,8 +59,7 @@ public class LoginServlet extends HttpServlet {
                 if ("Admin".equals(role)) {
                     response.sendRedirect(request.getContextPath() + "/candidats");
                 } else if ("Electeur".equals(role)) {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("user.jsp");
-                    dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/user");
                 }
             }else {
                 String errorMessage = "Invalid email or password";

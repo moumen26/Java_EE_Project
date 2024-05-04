@@ -23,8 +23,8 @@
     <span>Voting</span>
     <div class="right-class">
         <div class="login-class">
-            <i class="fa-regular fa-user"></i>
             <span>${username}</span>
+            <a href="${pageContext.request.contextPath}/logout"><i class="fa-regular fa-user"></i></a>
         </div>
     </div>
 </nav>
