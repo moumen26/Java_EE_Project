@@ -48,14 +48,12 @@ public class DisplayCandidatsServlet extends HttpServlet {
             } else {
                 request.setAttribute("candidats", candidats);
             }
-
+            RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+            dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error: " + e.getMessage());
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
-        dispatcher.forward(request, response);
     }
 
     @Override

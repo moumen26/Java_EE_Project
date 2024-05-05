@@ -39,8 +39,9 @@
                 for (Candidat candidat : Presidentialcandidats) { %>
 
                     <div class="vote-card">
+
                         <div class="vote-img">
-                            <img src="<%= candidat.getImage() %>" alt="">
+                            <img src="./Images/person.jpg" alt="">
                         </div>
                         <div class="vote-content">
                             <h3><%= candidat.getName() %></h3>
@@ -49,7 +50,6 @@
                                 repudiandae
                                 voluptatibus voluptatum voluptates quaerat quibusdam quia quo nihil quod.</p>
                         </div>
-                        <input type="submit" value="Vote">
                     </div>
         <%     }
         } else { %>
@@ -70,7 +70,7 @@
 
         <div class="vote-card">
             <div class="vote-img">
-                <img src="<%= candidat.getImage() %>" alt="">
+                <img src="./Images/person.jpg" alt="">
             </div>
             <div class="vote-content">
                 <h3><%= candidat.getName() %></h3>
@@ -79,7 +79,7 @@
                     repudiandae
                     voluptatibus voluptatum voluptates quaerat quibusdam quia quo nihil quod.</p>
             </div>
-            <input type="submit" value="Vote">
+            
         </div>
         <%     }
         } else { %>

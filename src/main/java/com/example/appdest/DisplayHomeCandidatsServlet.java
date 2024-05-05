@@ -85,9 +85,8 @@ public class DisplayHomeCandidatsServlet  extends HttpServlet {
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-        RequestDispatcher dispatcherUser = request.getRequestDispatcher("user.jsp");
         dispatcher.forward(request, response);
-        dispatcherUser.forward(request, response);
+
     }
 
     @Override

@@ -66,8 +66,10 @@
                     <td><%= candidat.getEmail() %></td>
                     <td><%= candidat.getElection() %></td>
                     <td class="button-column">
-                        <div class="add-button">
-                            <span>Update</span>
+                        <div id="updateButton">
+                            <input type="hidden" name="id" value="<%= candidat.getId() %>">
+
+                            <button class="add-button" style="background-color: green"><span>Update</span></button>
                         </div>
                         <form action="deleteCandidat" method="post">
                             <input type="hidden" name="id" value="<%= candidat.getId() %>">
@@ -118,12 +120,47 @@
 
 </div>
 
+<div class="add-candidat-class" id="UpdateCandidat">
+    <div class="add-candidat-class-container" style="height: 480px">
+        <span>Update Candidat</span>
+        <form action="updateCandidat" method="post">
+
+            <div class="candidat-form text-form">
+                <label for="name">Name:</label>
+                <input type="text" placeholder="Name.." name="UpdateName" id="UpdateName" required>
+            </div>
+            <div class="candidat-form text-form">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Email.." name="UpdateEmail" id="UpdateEmail" required>
+            </div>
+            <div class="candidat-form text-form">
+                <label for="election">Election:</label>
+                <input type="text" placeholder="Election.." name="UpdateElection" id="UpdateElection" required>
+            </div>
+            <div class="candidat-form form-image">
+                <input type="file" name="UpdateImage" id="UpdateImage" class="inputfile" />
+                <label for="UpdateImage">Choose a image</label>
+            </div>
+            <input type="submit" value="Save" class="save-button">
+        </form>
+    </div>
+
+</div>
+
 <script>
     var addCandidat = document.getElementById('addCandidat');
     var addButton = document.getElementById('addButton');
 
     addButton.addEventListener('click', function () {
         addCandidat.classList.add('Candidat-toggle');
+        console.log('candidate clicked');
+    });
+
+    var updateCandidat = document.getElementById('UpdateCandidat');
+    var updateButton = document.getElementById('updateButton');
+
+    updateButton.addEventListener('click', function () {
+        updateCandidat.classList.add('Candidat-toggle');
         console.log('candidate clicked');
     });
 

@@ -28,17 +28,48 @@
 
     </div>
 </nav>
+
 <section class="vote-section">
     <h2>Presidential</h2>
     <div class="vote-cards">
-
-        <% List<Candidat> candidats = (List<Candidat>) request.getAttribute("user");
-            if (candidats != null && !candidats.isEmpty()) {
-                for (Candidat candidat : candidats) { %>
+        <% List<Candidat> Presidentialcandidats = (List<Candidat>) request.getAttribute("userPresidential");
+            if (Presidentialcandidats != null && !Presidentialcandidats.isEmpty()) {
+                for (Candidat candidat : Presidentialcandidats) { %>
 
         <div class="vote-card">
             <div class="vote-img">
-                <img src="Images/person.jpg" alt="">
+                <img src="Images/person.jpg">
+
+            </div>
+            <div class="vote-content">
+                <h3><%= candidat.getName() %></h3>
+                <span>Vote for your favourite candidate</span>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae, quo, quas, quos
+                    repudiandae
+                    voluptatibus voluptatum voluptates quaerat quibusdam quia quo nihil quod.</p>
+            </div>
+            <input type="submit" value="Vote">
+        </div>
+        <%     }
+        } else { %>
+        <tr>
+            <td colspan="4">No candidats found</td>
+        </tr>
+        <% } %>
+
+    </div>
+</section>
+
+<section class="vote-section">
+    <h2>Senatorial</h2>
+    <div class="vote-cards">
+        <% List<Candidat> Senatorialcandidats = (List<Candidat>) request.getAttribute("userSenatorial");
+            if (Senatorialcandidats != null && !Senatorialcandidats.isEmpty()) {
+                for (Candidat candidat : Senatorialcandidats) { %>
+
+        <div class="vote-card">
+            <div class="vote-img">
+                <img src="Images/person.jpg">
             </div>
             <div class="vote-content">
                 <h3><%= candidat.getName() %></h3>
